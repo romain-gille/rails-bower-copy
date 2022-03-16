@@ -73,9 +73,24 @@
 .card-base {
   border-bottom: solid rgb(194, 194, 194) 1px;
 }
+
+.card-main-content {
+  width: 65%;
+}
 .card-owner {
-  width: 200px !important;
+  width: 20%;
+  word-break: break-all;
 }
 .card-stars {
-  width: 20%;
+  width: 15%;
+}
+.img-nav {
+  display: block;
+  width: 140px;
+  position: absolute;
+  left: 30px;
+  top: 15px;
+}
+.title-navbar-content {
+  margin-left: 230px;
 }
