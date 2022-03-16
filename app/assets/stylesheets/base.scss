@@ -35,6 +35,7 @@
 
 .menu-bar {
   padding: 2rem 1rem;
+  width: 350px;
 
   p {
     font-size: 1.1rem;
@@ -43,10 +44,38 @@
 
     &:hover {
       text-decoration: underline;
+      text-decoration-style: solid 2px;
 
       cursor: pointer;
     }
   }
 }
 .search-box {
+  height: 2rem;
+}
+.content-container {
+  h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 0.8rem;
+  }
+  a {
+    color: #008ec4;
+    text-decoration: none;
+    &:hover {
+      border-bottom: #008ec4 solid 2px;
+      color: #008ec4;
+    }
+  }
+}
+.card-base {
+  border-bottom: solid rgb(194, 194, 194) 1px;
+}
+.card-owner {
+  width: 200px !important;
+}
+.card-stars {
+  width: 20%;
 }
