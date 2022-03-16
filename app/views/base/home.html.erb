@@ -1,0 +1,19 @@
+<div class="d-flex">
+  <div class="menu-bar">
+    <p>Home</p>
+    <p>Creating Packages</p>
+    <p>API</p>
+    <p>Configuration</p>
+    <p>Pluggable Resolvers</p>
+    <p>Tools</p>
+    <p>About</p>
+  </div>
+  <div class="content-container d-flex flex-grow-1 border py-3 px-2 flex-column">
+    <div class="search-box border">Search</div>
+    <div class="content-packages d-flex flex-column">
+      <% @packages.each do |pack| %>
+        <h2><%= pack %></h2>
+      <% end %>
+    </div>
+  </div>
+</div>
