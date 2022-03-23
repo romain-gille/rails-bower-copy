@@ -21,6 +21,7 @@ export default class extends Controller {
         "data-sorted",
         event.currentTarget.dataset.value
       );
+      this.infoTarget.setAttribute("data-page", 1);
     } else {
       this.infoTarget.setAttribute(
         "data-page",

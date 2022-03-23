@@ -44,10 +44,19 @@
   .img-nav {
     width: 40px;
 
-    left: 20px;
-    top: 10px;
+    left: 50px;
+    top: 40px;
   }
   .title-navbar-content {
     margin-left: 130px;
+  }
+  .bower-nav {
+    height: 100px;
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 13px;
+    }
   }
 }
