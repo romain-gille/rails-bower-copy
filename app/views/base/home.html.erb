@@ -21,12 +21,14 @@
     <div class="content-packages d-flex flex-column border">
       <div class="card-base d-flex mx-2 buttons py-3">
         <div class="card-main-content">
-          Name
+          <a class="sort" data-action="click->searchzone#update"  data-value="name">Name</a>
         </div>
         <div class="card-owner px-2">
-          Owner</div>
+          <a class="sort" data-action="click->searchzone#update"  data-value="repository_url">Owner</a>
+        </div>
         <div class="card-stars px-2">
-          Stars</div>
+          <a class="sort" data-action="click->searchzone#update"  data-value="stars">Stars</a>
+        </div>
       </div>
       <%= render :partial => 'partials/all_cards', locals: { pack: @packsinfos} %>
     </div>

@@ -9,15 +9,17 @@ class BaseController < ApplicationController
               1
             end
 
-    @sort = if params[:sort].present?
+    @sort = if params[:sort].present? && params[:sort] != ''
               params[:sort]
             else
               'name'
             end
+
+    puts @sort
     @packsinfos = if params[:query].present?
-                    getinfo(params[:query]).sort_by! { |e| e[@sort].downcase }[((@page - 1) * 5)...(@page * 5)]
+                    getinfo(params[:query]).sort_by! { |e| e[@sort] }[((@page - 1) * 5)...(@page * 5)]
                   else
-                    getinfo('').sort_by! { |e| e[@sort].downcase }[((@page - 1) * 5)...(@page * 5)]
+                    getinfo('').sort_by! { |e| e[@sort] }[((@page - 1) * 5)...(@page * 5)]
                   end
 
     respond_to do |format|

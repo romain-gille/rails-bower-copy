@@ -7,10 +7,13 @@ export default class extends Controller {
     console.log(this.formTarget);
     console.log(this.inputTarget);
     console.log(this.listTarget);
+    // console.log(this.sortTarget);
   }
 
-  update() {
-    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`;
+  update(event) {
+    console.log(event.currentTarget.dataset.value);
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}&sort=${event.currentTarget.dataset.value}`;
+    console.log(url);
     fetch(url, { headers: { Accept: "text/plain" } })
       .then((response) => response.text())
       .then((data) => {
