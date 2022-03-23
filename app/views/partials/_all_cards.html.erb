@@ -1,0 +1,5 @@
+<div data-searchzone-target="list">
+  <% @packsinfos.each do |pack| %>
+    <%= render :partial => 'partials/packages-card', locals: { pack: pack} %>
+  <% end %>
+</div>

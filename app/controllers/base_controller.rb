@@ -19,6 +19,11 @@ class BaseController < ApplicationController
                   else
                     getinfo('').sort_by! { |e| e[@sort].downcase }[((@page - 1) * 5)...(@page * 5)]
                   end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'partials/all_cards', locals: { pack: @packsinfos }, formats: [:html] }
+    end
   end
 
   private

@@ -8,59 +8,32 @@
     <p>Tools</p>
     <p>About</p>
   </div>
-  <div class="content-container d-flex py-3 px-2 flex-column ">
-    <%= form_tag root_path,hint: 'No special characters.', method: :get, class:"search-box" do %>
-      <%= text_field_tag (:query) %>
+  <div class="content-container d-flex py-3 px-2 flex-column " data-controller = "searchzone">
+    <%= form_with url: root_path, method: :get, html: { class:
+    'mb-4', data: { searchzone_target: 'form' } } do |f| %>
+      <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: 'Search',
+                     value: params[:query],
+                     data: { searchzone_target: 'input',
+                            action: 'keyup->searchzone#update' } %>
     <% end %>
     <div class="content-packages d-flex flex-column border">
       <div class="card-base d-flex mx-2 buttons py-3">
         <div class="card-main-content">
-          <%= form_tag root_path, method: :get do %>
-            <%= hidden_field_tag :query, params[:query] %>
-            <%= hidden_field_tag :sort, "name" %>
-            <%= button_tag type: "submit" do %>
-              Name
-            <% end %>
-          <% end %>
+          Name
         </div>
         <div class="card-owner px-2">
-          <%= form_tag root_path, method: :get do %>
-            <%= hidden_field_tag :query, params[:query] %>
-            <%= hidden_field_tag :sort, "repository_url" %>
-            <%= button_tag type: "submit" do %>
-              Owner
-            <% end %>
-          <% end %></div>
+          Owner</div>
         <div class="card-stars px-2">
-          <%= form_tag root_path, method: :get do %>
-            <%= hidden_field_tag :query, params[:query] %>
-            <%= hidden_field_tag :sort, "stars" %>
-            <%= button_tag type: "submit" do %>
-              Stars
-            <% end %>
-          <% end %></div>
+          Stars</div>
       </div>
-      <% @packsinfos.each do |pack| %>
-        <%= render :partial => 'partials/packages-card', locals: { pack: pack} %>
-      <% end %>
+      <%= render :partial => 'partials/all_cards', locals: { pack: @packsinfos} %>
     </div>
     <div class="pagination d-flex justify-content-center mt-2">
-      <%= form_tag root_path, method: :get do %>
-        <%= hidden_field_tag :page, @page-1 %>
-        <%= hidden_field_tag :query, params[:query] %>
-        <%= button_tag type: "submit" do %>
-          <
-        <% end %>
-      <% end %>
+      <
       <p>page <%= @page %></p>
-          <%= form_tag root_path, method: :get do %>
-            <%= hidden_field_tag :page, @page+1 %>
-            <%= hidden_field_tag :query, params[:query] %>
-            <%= hidden_field_tag :sort, params[:sort] %>
-            <%= button_tag type: "submit" do %>
-              >
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+      >
     </div>
+  </div>
+</div>
