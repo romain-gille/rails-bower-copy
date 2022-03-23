@@ -8,20 +8,16 @@
     <p>Tools</p>
     <p>About</p>
   </div>
-  <div class="content-container d-flex flex-grow-1  py-3 px-2 flex-column ">
-    <div class="search-box border mb-2">Search</div>
-    <div class="content-packages d-flex flex-column border">
-      <% @packsinfos.each do |pack| %>
-        <div class="card-base d-flex mx-2">
-          <div class="card-main-content">
-            <h2 class="pt-3 pb-1"> <a href="<%= pack["homepage"] %>"><%= pack["name"] %></a>  </h2>
-            <h4> <a href="<%= pack["homepage"] %>"><%= pack["homepage"] %></a> </h4>
-            <p><%= pack["description"] %></p>
-          </div>
-          <div class="card-owner align-items-center d-flex px-2"><%= pack["repository_url"].split("/")[3] %></div>
-          <div class="card-stars align-items-center d-flex px-2"><%= pack["stars"] %></div>
-        </div>
-      <% end %>
-    </div>
+  <div class="content-container d-flex py-3 px-2 flex-column " data-controller = "searchzone" data-page ="1" data-sorted ="name" data-searchzone-target="info">
+    <%= form_with url: root_path, method: :get, html: { class:
+    'mb-4', data: { searchzone_target: 'form' } } do |f| %>
+      <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: 'Search',
+                     value: params[:query],
+                     data: { searchzone_target: 'input',
+                            action: 'keyup->searchzone#update' } %>
+    <% end %>
+    <%= render :partial => 'partials/all_cards', locals: { pack: @packsinfos} %>
   </div>
 </div>
