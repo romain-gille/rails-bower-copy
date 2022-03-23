@@ -9,7 +9,7 @@ class BaseController < ApplicationController
               1
             end
 
-    @sort = if params[:sort].present? && params[:sort] != ''
+    @sort = if params[:sort].present? && defined?(params[:sort])
               params[:sort]
             else
               'name'
@@ -17,9 +17,21 @@ class BaseController < ApplicationController
 
     puts @sort
     @packsinfos = if params[:query].present?
-                    getinfo(params[:query]).sort_by! { |e| e[@sort] }[((@page - 1) * 5)...(@page * 5)]
+                    packtotal = if @sort == 'stars'
+                                  getinfo(params[:query]).sort_by! { |e| -e[@sort] }
+
+                                elsif @sort == 'name' || @sort == 'repository_url'
+                                  getinfo(params[:query]).sort_by! { |e| e[@sort].downcase }
+
+                                end
+                    packtotal[((@page - 1) * 5)...(@page * 5)]
+
+                  elsif @sort == 'stars'
+                    getinfo('').sort_by! { |e| -e[@sort] }[((@page - 1) * 5)...(@page * 5)]
                   else
-                    getinfo('').sort_by! { |e| e[@sort] }[((@page - 1) * 5)...(@page * 5)]
+
+                    getinfo('').sort_by! { |e| e[@sort].downcase }[((@page - 1) * 5)...(@page * 5)]
+
                   end
 
     respond_to do |format|

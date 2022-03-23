@@ -1,6 +1,6 @@
 <div class="card-base d-flex mx-2">
   <div class="card-main-content">
-    <h2 class="pt-3 pb-1"> <a href="<%= pack["repository_url"] %>"><%= pack["name"] %></a>  </h2>
+    <h2 class="pt-3 pb-1"> <a href="<%= pack["repository_url"] %>"><%= pack["name"].downcase %></a>  </h2>
     <h4> <a href="<%= pack["homepage"] %>"><%= pack["homepage"] %></a> </h4>
     <p><%= pack["description"] %></p>
   </div>

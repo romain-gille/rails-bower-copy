@@ -1,5 +1,25 @@
 <div data-searchzone-target="list">
-  <% @packsinfos.each do |pack| %>
-    <%= render :partial => 'partials/packages-card', locals: { pack: pack} %>
-  <% end %>
-</div>
+  <div class="content-packages d-flex flex-column border">
+    <div class="card-base d-flex mx-2 buttons py-3">
+      <div class="card-main-content">
+        <a class="sort" data-action="click->searchzone#update"  data-value="name">Name</a>
+      </div>
+      <div class="card-owner px-2">
+        <a class="sort" data-action="click->searchzone#update"  data-value="repository_url">Owner</a>
+      </div>
+      <div class="card-stars px-2">
+        <a class="sort" data-action="click->searchzone#update"  data-value="stars">Stars</a>
+      </div>
+    </div>
+    <div >
+      <% @packsinfos.each do |pack| %>
+        <%= render :partial => 'partials/packages-card', locals: { pack: pack} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="pagination d-flex justify-content-center mt-2">
+    <button data-action="click->searchzone#update" data-value=<%= @page -1 %>><</button>
+        <p>page <%= @page %></p>
+        <button data-action="click->searchzone#update" data-value=<%= @page +1 %>>></button>
+      </div>
+    </div>

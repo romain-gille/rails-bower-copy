@@ -8,7 +8,7 @@
     <p>Tools</p>
     <p>About</p>
   </div>
-  <div class="content-container d-flex py-3 px-2 flex-column " data-controller = "searchzone">
+  <div class="content-container d-flex py-3 px-2 flex-column " data-controller = "searchzone" data-page ="1" data-sorted ="name" data-searchzone-target="info">
     <%= form_with url: root_path, method: :get, html: { class:
     'mb-4', data: { searchzone_target: 'form' } } do |f| %>
       <%= f.text_field :query,
@@ -18,24 +18,6 @@
                      data: { searchzone_target: 'input',
                             action: 'keyup->searchzone#update' } %>
     <% end %>
-    <div class="content-packages d-flex flex-column border">
-      <div class="card-base d-flex mx-2 buttons py-3">
-        <div class="card-main-content">
-          <a class="sort" data-action="click->searchzone#update"  data-value="name">Name</a>
-        </div>
-        <div class="card-owner px-2">
-          <a class="sort" data-action="click->searchzone#update"  data-value="repository_url">Owner</a>
-        </div>
-        <div class="card-stars px-2">
-          <a class="sort" data-action="click->searchzone#update"  data-value="stars">Stars</a>
-        </div>
-      </div>
-      <%= render :partial => 'partials/all_cards', locals: { pack: @packsinfos} %>
-    </div>
-    <div class="pagination d-flex justify-content-center mt-2">
-      <
-      <p>page <%= @page %></p>
-      >
-    </div>
+    <%= render :partial => 'partials/all_cards', locals: { pack: @packsinfos} %>
   </div>
 </div>
